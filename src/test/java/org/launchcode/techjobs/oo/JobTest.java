@@ -9,14 +9,16 @@ import static org.junit.Assert.*;
 public class JobTest {
     @Test
     public void testSettingJobId() {
-    Job job1 = new Job();
-    Job job2 = new Job();
+        Job job1 = new Job();
+        Job job2 = new Job();
 
-    int job1ID = job1.getId();
-    int job2ID = job2.getId();
+        int job1ID = job1.getId();
+        int job2ID = job2.getId();
 
-    assertNotEquals(job1ID, job2ID);
+        assertNotEquals(job1ID, job2ID);
     }
+
+
     @Test
     public void testJobConstructorSetsAllFields() {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
@@ -43,8 +45,6 @@ public class JobTest {
     }
 
 
-
-
     //Jobs are = if same id.    Even if other fields differ
     //Jobs are != if dif id.    Even if other fields are identical.
     @Test
@@ -54,7 +54,7 @@ public class JobTest {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-        // Test that *equals* returns *false*.
+        // Test that *EQUALS* returns *FALSE*.
         //so if job1 .equals job2 retrun false
         assertFalse(job1.equals(job2));
 
@@ -62,22 +62,60 @@ public class JobTest {
     }
 
 
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        //should return a string that contains a blank line before and after the job information.
+        //check first & last *CHARACTERS* (charAT) of the *STRING* (toString) both = \n
+
+        assertEquals('\n', job1.toString().charAt(0));
+    }
+
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        //Have label for each field
+                // --"ID:" , "Name:" , "Employer" Etc.
+        //followed by data stored in that field
+                // -- "\nName: Product Tester"
+        //Each should be on \n
 
 
 
+        // assertEquals("\nID: " + job1.getId() + "\nName: Product Tester", job1.toString());
 
 
+        String format =
+                "\nID: " + job1.getId() +
+                        "\nName: " + job1.getName() +
+                        "\nEmployer: " + job1.getEmployer() +
+                        "\nLocation: " + job1.getLocation() +
+                        "\nPosition Type: " + job1.getPositionType() +
+                        "\nCore Competency: " + job1.getCoreCompetency() +
+                        "\n";
 
 
-
-
-
-
-
-
+        assertEquals(format, job1.toString());
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
