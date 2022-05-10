@@ -40,12 +40,43 @@ public class JobTest {
 
         assertEquals("Persistence", job1.getCoreCompetency().getValue());
         assertTrue(job1.getCoreCompetency() instanceof CoreCompetency);
+    }
 
 
 
+
+    //Jobs are = if same id.    Even if other fields differ
+    //Jobs are != if dif id.    Even if other fields are identical.
+    @Test
+    public void testJobForEquality() {
+        //Generate two Job objects that have identical field values EXCEPT for id.
+        //Already know id's dont equal from passed test above
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        // Test that *equals* returns *false*.
+        //so if job1 .equals job2 retrun false
+        assertFalse(job1.equals(job2));
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
