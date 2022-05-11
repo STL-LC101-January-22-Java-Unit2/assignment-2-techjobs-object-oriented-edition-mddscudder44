@@ -101,6 +101,26 @@ public class JobTest {
         assertEquals(format, job1.toString());
     }
 
+    @Test
+    public void testToStringHandlesEmptyField() {
+        //test if ANY field is empty
+        //Declare a test passing it ALL empty fields for it
+        Job job1 = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+
+        String format =
+                "\nID: " + job1.getId() +
+                        "\nName: " + "Data not available" +
+                        "\nEmployer: " + "Data not available" +
+                        "\nLocation: " + "Data not available" +
+                        "\nPosition Type: " + "Data not available" +
+                        "\nCore Competency: " + "Data not available" +
+                        "\n";
+
+
+
+        assertEquals(job1.toString(), format);
+    }
+
 
 }
 

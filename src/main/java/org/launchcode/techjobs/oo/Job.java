@@ -31,6 +31,7 @@ public class Job {
     }
 
 
+
     // TODO: Add custom equals and hashCode methods. Consider two Job
     //  objects "equal" when their id fields match.
 
@@ -52,12 +53,21 @@ public class Job {
         //make each line start with "\n"
         return
                 "\nID: " + id +
-                "\nName: " + name +
-                "\nEmployer: " + employer +
-                "\nLocation: " + location +
-                "\nPosition Type: " + positionType +
-                "\nCore Competency: " + coreCompetency +
+                "\nName: " + whenFieldIsEmpty(name, "Data not available") +
+                "\nEmployer: " + whenFieldIsEmpty(employer.getValue(), "Data not available") +
+                "\nLocation: " + whenFieldIsEmpty(location.getValue(), "Data not available") +
+                "\nPosition Type: " + whenFieldIsEmpty(positionType.getValue(), "Data not available") +
+                "\nCore Competency: " + whenFieldIsEmpty(coreCompetency.getValue(), "Data not available") +
                 "\n" ;
+
+    }
+
+    public String whenFieldIsEmpty(String value, String whenFieldIsEmpty) {
+        if(value.length() == 0) {
+            return whenFieldIsEmpty;
+        } else {
+            return value;
+        }
     }
 
 
