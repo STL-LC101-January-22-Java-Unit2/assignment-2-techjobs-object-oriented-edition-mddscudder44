@@ -1,17 +1,11 @@
-package org.launchcode.techjobs.oo.test;
+package org.launchcode.techjobs.oo;
 
+import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-import org.launchcode.techjobs.oo.*;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
 
-/**
- * Created by LaunchCode
- */
-@RunWith(JUnit4.class)
+
 public class JobTest {
     @Test
     public void testSettingJobId() {
@@ -54,7 +48,7 @@ public class JobTest {
     //Jobs are = if same id.    Even if other fields differ
     //Jobs are != if dif id.    Even if other fields are identical.
     @Test
-    public void testJobsForEquality() {
+    public void testJobForEquality() {
         //Generate two Job objects that have identical field values EXCEPT for id.
         //Already know id's dont equal from passed test above
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
@@ -75,21 +69,7 @@ public class JobTest {
         //should return a string that contains a blank line before and after the job information.
         //check first & last *CHARACTERS* (charAT) of the *STRING* (toString) both = \n
 
-        //assertEquals('\n', job1.toString().charAt(0));
-
-        //  *STARTS* with newline
-        char start = job1.toString().charAt(0);
-        assertEquals(start, '\n');
-
-        //  *ENDS* with newline     get the last *CHAR*
-        char last = job1.toString().charAt(job1.toString().length() - 1);
-        assertEquals(last, '\n');
-
-       // char last = job1.toString().charAt(job1.length - 1);
-        //char last = charAt(job1.toString().length() - 1);
-
-
-
+        assertEquals('\n', job1.toString().charAt(0));
     }
 
 
@@ -98,9 +78,9 @@ public class JobTest {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
         //Have label for each field
-        // --"ID:" , "Name:" , "Employer" Etc.
+                // --"ID:" , "Name:" , "Employer" Etc.
         //followed by data stored in that field
-        // -- "\nName: Product Tester"
+                // -- "\nName: Product Tester"
         //Each should be on \n
 
 
@@ -143,6 +123,29 @@ public class JobTest {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
