@@ -54,7 +54,7 @@ public class JobTest {
     //Jobs are = if same id.    Even if other fields differ
     //Jobs are != if dif id.    Even if other fields are identical.
     @Test
-    public void testJobForEquality() {
+    public void testJobsForEquality() {
         //Generate two Job objects that have identical field values EXCEPT for id.
         //Already know id's dont equal from passed test above
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
@@ -81,7 +81,7 @@ public class JobTest {
         char start = job1.toString().charAt(0);
         assertEquals(start, '\n');
 
-        //  *ENDS* with newline     get the last character
+        //  *ENDS* with newline     get the last *CHAR*
         char last = job1.toString().charAt(job1.toString().length() - 1);
         assertEquals(last, '\n');
 
