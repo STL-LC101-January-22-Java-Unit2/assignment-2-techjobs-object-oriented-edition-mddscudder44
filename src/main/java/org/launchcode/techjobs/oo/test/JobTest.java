@@ -75,7 +75,21 @@ public class JobTest {
         //should return a string that contains a blank line before and after the job information.
         //check first & last *CHARACTERS* (charAT) of the *STRING* (toString) both = \n
 
-        assertEquals('\n', job1.toString().charAt(0));
+        //assertEquals('\n', job1.toString().charAt(0));
+
+        //  *STARTS* with newline
+        char start = job1.toString().charAt(0);
+        assertEquals(start, '\n');
+
+        //  *ENDS* with newline     get the last character
+        char last = job1.toString().charAt(job1.toString().length() - 1);
+        assertEquals(last, '\n');
+
+       // char last = job1.toString().charAt(job1.length - 1);
+        //char last = charAt(job1.toString().length() - 1);
+
+
+
     }
 
 
